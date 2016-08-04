@@ -1,0 +1,37 @@
+_repo: California-1849-1913--Or-The-Rambling-Sketches-and-Experiences-of-Sixty-four-Years-Residence-i__4638
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Woolley, L. H. (Lell Hawley)
+    alias: Woolley, Lell Hawley
+    birthdate: 1825
+    gutenberg_agent_id: '1522'
+    url: http://www.gutenberg.org/2009/agents/1522
+description: Lell Hawley Woolley (b. 1825) left the Green Mountains of Vermont to
+  cross the plains in a mule train to California in 1849. There he tried gold mining
+  in Weaverville and Beal's Bar and hotelkeeping in Grass Valley before his marriage
+  and the responsibilities of a home and family took him to San Francisco. There he
+  went into business and was active in the Vigilance Committee of 1856. California,
+  1849-1913 (1913) offers anecdotes of these adventures as well as brief notes on
+  San Francisco personalities and business life in the 1850s and 1860s, with some
+  references to later decades.
+gutenberg_issued: '2003-11-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '4638'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Law -- Political aspects -- California'
+- !lcsh 'Frontier and pioneer life -- California'
+- !lcc 'F850.5'
+- !lcsh 'Urbanization -- California'
+- !lcsh 'Real estate development -- California'
+- !lcsh 'Mines and mineral resources -- California'
+- !lcsh 'Business -- California'
+- GITenberg
+title: California, 1849-1913; Or, The Rambling Sketches and Experiences of Sixty-four
+  Years' Residence in that State
+url: http://www.gutenberg.org/ebooks/4638
