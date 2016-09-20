@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: PPdiIouIcWdjIIXBMUl+90sy2aGGY5L1Y/V+++CuEk/U2j3hmZYDeY2pxh5CoWs4sG5x0B/uU4eE/8ckASyjlLF0eTuw7fiBhFtwaQBi3mrEr1/zTTFq8ggYOxsqRSW20c5+SR5ZFQEFqEMAqk5LlKrrl1vAEiMAbX2hOAmD9ORxcsMqPByNZoqR4RFNcTd0JTidIaQ1oJkwzsoIueN2q6e0KfQJWHQMED+/593RsPou3tCRJA7XnWzeXX43qM4yBcBncKH58rFbph1qHa/RKdWhNdmej45RCUqsnAMs2S7H7IH7gNiIhar0Lbgucb/o+3A71e1iNeiOz6RCgkkEHh7DEs8YfwSbq6zwUDcPAiJhGUNBCj/mpSlTf7PDAUTHn/fxOJCGfm6HpjroE019mtNbFNxDdA1kCtLTrP02LTm0ntnC0tYi0hpi6aTn+5SxqplhddxmaWV55hNKsgqQ7i7KPzGvRo01o8+Df+E9KjwPrF/TjDfI33yH7YArSGOmg68Vr6CVbfMMUF9ug9Ra8nmihMWQQ/hUy9FsyhvfV/WyId7WxF0RWAWtK4eABUrxbbE02IJetZ7OqpIUkK0wV0qCpegPXLENeu2YKvyS77cpijOaT/2j/Vkk3REdY4O6Uc4DC6TbXDH7ZD8RCMXTJQN6HfeXV1JdW0N6ke5HqUY=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/California-1849-1913--Or-The-Rambling-Sketches-and-Experiences-of-Sixty-four-Years-Residence-i__4638
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
